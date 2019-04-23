@@ -1,0 +1,106 @@
+if type gls >/dev/null 2>/dev/null; then
+	alias ls="gls -hF --color --group-directories-first"
+	alias sls="sudo gls -F --color --group-directories-first"
+else
+	alias ls="ls -hF --color --group-directories-first"
+	alias sls="sudo ls -F --color --group-directories-first"
+fi
+
+# just ls
+alias ll="ls -al"
+alias l.="ll -d .*"
+alias lsd="ll -d"
+alias lm="ls -m"
+alias lt="ls -lt"
+alias ltr="ls -ltr"
+alias lss="ll --sort=size"
+alias lssr="ll -r --sort=size"
+# sudo ls
+alias sll="sudo ll"
+alias slsd="sudo lsd"
+alias slm="sudo lm"
+alias slt="sudo lt"
+alias sltr="sudo ltr"
+alias slss="sudo lss"
+alias slssr="sudo lssr"
+
+# navigation
+alias ~='cd ~'
+alias cdd='cd -'
+alias cdn='pushd'
+alias cdp='popd'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# quick source/edit various configs
+alias ea='vim ~/dotfiles/aliases'
+alias sb='source ~/.bashrc'
+alias ev='vim ~/.vimrc'
+alias sv='source ~/.vimrc'
+
+# common commands
+alias apt-get='sudo apt-get'
+alias bc='bc -l'
+alias c='clear'
+alias df="df -h"
+alias diff='colordiff'
+alias du="du -csh"
+alias getpass='openssl rand -base64 25'
+alias gip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
+alias grep='grep --color'
+alias gs='ps aux | grep [s]sh'
+alias h='history'
+alias ipt='sudo iptables'
+alias iptl='sudo iptables -L -n -v --line-numbers'
+alias iptli='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
+alias ipltlo='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
+alias mkdir='mkdir -pv'
+alias mount='mount|column -t'
+alias now='date +"%T"'
+alias ports='netstat -tulanp'
+alias psg="ps aux | grep -v grep | grep "
+alias psgi="ps aux | grep -v grep | grep -i "
+alias s!!='sudo !!'
+alias sha='shasum -a 256 '
+alias ssha='ssh-add ~/.ssh/*[dr]sa'
+alias svndiff='svn diff --diff-cmd=svndiff_helper'
+alias untar='tar -xzvf'
+alias vi="vim"
+alias view='vim -R'
+alias svim='sudo vim'
+alias sview='sudo vim -R'
+alias wget='wget -c'
+
+# puppet commands
+alias cherb="for i in *.erb ; do echo -n \"\$i: \"  ; erb -P -x -T '-' \$i | ruby -c ; done"
+alias pcl="sudo puppet cert list"
+alias pcla="sudo puppet cert list --all"
+alias pcs="sudo puppet cert sign"
+alias pcsa="sudo puppet cert sign --all"
+alias pdoc="sudo rm -rf /var/www/html/puppet ; sudo puppet doc -o /var/www/html/puppet -a -m rdoc ; sudo perl -p -i -e 's/password => \"(.)*\"/password => \"\*\"/' /var/www/html/puppet/classes/users/internal/*"
+alias ptdoc="rm -rf ~/public_html/puppet ; puppet doc -o ~/public_html/puppet --modulepath ~/git/ops/puppet/modules --manifestdir ~/git/ops/puppet/manifests -a -m rdoc --trace --debug"
+alias poff="sudo puppet agent --disable"
+alias pon="sudo puppet agent --enable"
+alias ppv="puppet parser validate"
+alias pat="sudo puppet agent --test"
+alias patr="sudo puppet agent --test --no-use_cached_catalog"
+alias pate="pat --environment"
+alias patn="pat --noop"
+alias patne="pat --noop --environment"
+alias patre="patr --environment"
+alias patrn="patr --noop"
+alias patrne="patr --noop --environment"
+
+# updates: check for rhel/cent, otherwise assume deb/ubu
+if type yum >/dev/null 2>/dev/null; then
+	alias update='sudo yum -y update'
+else
+	alias update='sudo apt-get update && sudo apt-get upgrade'
+fi
+
+# cleaning house 
+alias clnswp='find . -name .*.sw[mnop] -type f -delete'
+alias clnmac="find . -name '*.DS_Store' -type f -delete"
