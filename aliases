@@ -1,3 +1,4 @@
+# just ls
 if type gls >/dev/null 2>/dev/null; then
 	alias ls="gls -hF --color --group-directories-first"
 	alias sls="sudo gls -F --color --group-directories-first"
@@ -6,23 +7,23 @@ else
 	alias sls="sudo ls -F --color --group-directories-first"
 fi
 
-# just ls
-alias ll="ls -al"
 alias l.="ll -d .*"
-alias lsd="ll -d"
+alias ll="ls -al"
 alias lm="ls -m"
-alias lt="ls -lt"
-alias ltr="ls -ltr"
+alias lsd="ll -d"
 alias lss="ll --sort=size"
 alias lssr="ll -r --sort=size"
+alias lt="ls -lt"
+alias ltr="ls -ltr"
 # sudo ls
+alias sl.="sudo ll -d .*"
 alias sll="sudo ll"
-alias slsd="sudo lsd"
 alias slm="sudo lm"
-alias slt="sudo lt"
-alias sltr="sudo ltr"
+alias slsd="sudo lsd"
 alias slss="sudo lss"
 alias slssr="sudo lssr"
+alias slt="sudo lt"
+alias sltr="sudo ltr"
 
 # navigation
 alias ~='cd ~'
@@ -56,7 +57,7 @@ alias h='history'
 alias ipt='sudo iptables'
 alias iptl='sudo iptables -L -n -v --line-numbers'
 alias iptli='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
-alias ipltlo='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
+alias iptlo='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
 alias mkdir='mkdir -pv'
 alias mount='mount|column -t'
 alias now='date +"%T"'
