@@ -48,12 +48,14 @@ alias bc='bc -l'
 alias c='clear'
 alias df="df -h"
 alias diff='colordiff'
-alias du="du -csh"
+alias du="du -h"
+alias du1='du --max-depth=1'
 alias getpass='openssl rand -base64 25'
 alias gip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
 alias grep='grep --color'
 alias gs='ps aux | grep [s]sh'
 alias h='history'
+alias hg='history|grep'
 alias ipt='sudo iptables'
 alias iptl='sudo iptables -L -n -v --line-numbers'
 alias iptli='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
