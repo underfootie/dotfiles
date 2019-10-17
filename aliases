@@ -76,19 +76,13 @@ alias sha='shasum -a 256 '
 alias ssha='ssh-add ~/.ssh/*[dr]sa'
 alias untar='tar -xzvf'
 alias vi="vim"
-alias view='vim -R'
+alias svi='sudo vim'
 alias svim='sudo vim'
+alias view='vim -R'
 alias sview='sudo vim -R'
 alias wget='wget -c'
 
 # puppet commands
-alias cherb="for i in *.erb ; do echo -n \"\$i: \"  ; erb -P -x -T '-' \$i | ruby -c ; done"
-alias pcl="sudo puppet cert list"
-alias pcla="sudo puppet cert list --all"
-alias pcs="sudo puppet cert sign"
-alias pcsa="sudo puppet cert sign --all"
-alias pdoc="sudo rm -rf /var/www/html/puppet ; sudo puppet doc -o /var/www/html/puppet -a -m rdoc ; sudo perl -p -i -e 's/password => \"(.)*\"/password => \"\*\"/' /var/www/html/puppet/classes/users/internal/*"
-alias ptdoc="rm -rf ~/public_html/puppet ; puppet doc -o ~/public_html/puppet --modulepath ~/git/ops/puppet/modules --manifestdir ~/git/ops/puppet/manifests -a -m rdoc --trace --debug"
 alias poff="sudo puppet agent --disable"
 alias pon="sudo puppet agent --enable"
 alias ppv="puppet parser validate"
@@ -100,6 +94,13 @@ alias patne="pat --noop --environment"
 alias patre="patr --environment"
 alias patrn="patr --noop"
 alias patrne="patr --noop --environment"
+alias pcl="sudo puppet cert list"
+alias pcla="sudo puppet cert list --all"
+alias pcs="sudo puppet cert sign"
+alias pcsa="sudo puppet cert sign --all"
+alias pdoc="sudo rm -rf /var/www/html/puppet ; sudo puppet doc -o /var/www/html/puppet -a -m rdoc ; sudo perl -p -i -e 's/password => \"(.)*\"/password => \"\*\"/' /var/www/html/puppet/classes/users/internal/*"
+alias ptdoc="rm -rf ~/public_html/puppet ; puppet doc -o ~/public_html/puppet --modulepath ~/git/ops/puppet/modules --manifestdir ~/git/ops/puppet/manifests -a -m rdoc --trace --debug"
+alias cherb="for i in *.erb ; do echo -n \"\$i: \"  ; erb -P -x -T '-' \$i | ruby -c ; done"
 
 # updates: check for rhel/cent, otherwise assume deb/ubu
 if type yum >/dev/null 2>/dev/null; then
@@ -108,6 +109,6 @@ else
 	alias update='sudo apt-get update && sudo apt-get upgrade'
 fi
 
-# cleaning house
+# housekeeping
 alias clnswp='find . -name .*.sw[mnop] -type f -delete'
 alias clnmac="find . -name '*.DS_Store' -type f -delete"
