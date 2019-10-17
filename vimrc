@@ -17,11 +17,10 @@ set lazyredraw
 set wildmenu
 set wildignore=*.o,*~,*.pyc
 set noeb vb t_vb=
-filetype indent on
-au GUIEnter * set vb t_vb=
+autocmd BufWritePre * %s/\s\+$//e
+" filetype indent on
+" au GUIEnter * set vb t_vb=
 colorscheme solarized
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
 
 " Delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()

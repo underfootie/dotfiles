@@ -1,14 +1,14 @@
 # just ls
 if type gls >/dev/null 2>/dev/null; then
-	alias ls="gls -hF --color --group-directories-first"
+	alias ls="gls -F --color --group-directories-first"
 	alias sls="sudo gls -F --color --group-directories-first"
 else
-	alias ls="ls -hF --color --group-directories-first"
-	alias sls="sudo ls -F --color --group-directories-first"
+	alias ls="ls -GF"
+	alias sls="sudo ls -GF"
 fi
 
 alias l.="ll -d .*"
-alias ll="ls -al"
+alias ll="ls -alh"
 alias lm="ls -m"
 alias lsd="ll -d"
 alias lss="ll --sort=size"
@@ -43,13 +43,17 @@ alias ev='vim ~/.vimrc'
 alias sv='source ~/.vimrc'
 
 # common commands
+alias apt='sudo apt'
 alias apt-get='sudo apt-get'
 alias bc='bc -l'
 alias c='clear'
 alias df="df -h"
-alias diff='colordiff'
 alias du="du -h"
-alias du1='du --max-depth=1'
+if [[ $OSTYPE == "darwin%" ]]; then
+	alias du1='du -d1'
+elif [[ $OSTYPE == "linux-gnu" ]]; then
+	alias du1='du --max-depth=1'
+fi
 alias getpass='openssl rand -base64 25'
 alias gip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
 alias grep='grep --color'
@@ -70,7 +74,6 @@ alias psgi="ps aux | grep -v grep | grep -i "
 alias s!!='sudo !!'
 alias sha='shasum -a 256 '
 alias ssha='ssh-add ~/.ssh/*[dr]sa'
-alias svndiff='svn diff --diff-cmd=svndiff_helper'
 alias untar='tar -xzvf'
 alias vi="vim"
 alias view='vim -R'
@@ -105,6 +108,6 @@ else
 	alias update='sudo apt-get update && sudo apt-get upgrade'
 fi
 
-# cleaning house 
+# cleaning house
 alias clnswp='find . -name .*.sw[mnop] -type f -delete'
 alias clnmac="find . -name '*.DS_Store' -type f -delete"
