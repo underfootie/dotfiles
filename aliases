@@ -40,7 +40,6 @@ alias .5='cd ../../../../..'
 alias ea='vim ~/dotfiles/aliases'
 alias sb='source ~/.bashrc'
 alias ev='vim ~/.vimrc'
-alias sv='source ~/.vimrc'
 
 # common commands
 alias apt='sudo apt'
