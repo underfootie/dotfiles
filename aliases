@@ -101,6 +101,13 @@ alias pdoc="sudo rm -rf /var/www/html/puppet ; sudo puppet doc -o /var/www/html/
 alias ptdoc="rm -rf ~/public_html/puppet ; puppet doc -o ~/public_html/puppet --modulepath ~/git/ops/puppet/modules --manifestdir ~/git/ops/puppet/manifests -a -m rdoc --trace --debug"
 alias cherb="for i in *.erb ; do echo -n \"\$i: \"  ; erb -P -x -T '-' \$i | ruby -c ; done"
 
+# kubernetes
+alias k="kubectl"
+alias kgn="k get nodes"
+alias kgns="k get namespaces"
+alias kgp="k get pods -n"	# usage: kgp <namespace>
+alias kgpa="k get pods --all-namespaces"
+
 # updates: check for rhel/cent, otherwise assume deb/ubu
 if type yum >/dev/null 2>/dev/null; then
 	alias update='sudo yum -y update'
