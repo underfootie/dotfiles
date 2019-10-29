@@ -38,7 +38,7 @@ alias .5='cd ../../../../..'
 
 # quick source/edit various configs
 alias ea='vim ~/dotfiles/aliases'
-alias sb='source ~/.bashrc'
+alias sb='source ~/.bash_profile'
 alias ev='vim ~/.vimrc'
 
 # common commands
@@ -107,6 +107,8 @@ alias kgn="k get nodes"
 alias kgns="k get namespaces"
 alias kgp="k get pods -n"	# usage: kgp <namespace>
 alias kgpa="k get pods --all-namespaces"
+alias kc="k config get-contexts"
+alias ku="k config use-context"	# usage: ku <context_name>
 
 # updates: check for rhel/cent, otherwise assume deb/ubu
 if type yum >/dev/null 2>/dev/null; then
