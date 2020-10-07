@@ -1,10 +1,10 @@
 # just ls
-if type gls >/dev/null 2>/dev/null; then
-	alias ls="gls -F --color --group-directories-first"
-	alias sls="sudo gls -F --color --group-directories-first"
+if [[ $OSTYPE =~ ^darwin ]]; then
+        alias ls="ls -GF"
+        alias sls="sudo ls -GF"
 else
-	alias ls="ls -GF"
-	alias sls="sudo ls -GF"
+        alias ls="ls --color -F"
+        alias sls="ls --color -F"
 fi
 
 alias l.="ll -d .*"
@@ -38,8 +38,12 @@ alias .5='cd ../../../../..'
 
 # quick source/edit various configs
 alias ea='vim ~/dotfiles/aliases'
-alias sb='source ~/.bash_profile'
+alias eb='vim ~/.bashrc'
+alias ef='vim ~/dotfiles/functions'
 alias ev='vim ~/.vimrc'
+alias ez='vim ~/.zshrc'
+alias sb='source ~/.bash_profile'
+alias sz='source ~/.zshrc'
 
 # common commands
 alias apt='sudo apt'
@@ -103,12 +107,34 @@ alias cherb="for i in *.erb ; do echo -n \"\$i: \"  ; erb -P -x -T '-' \$i | rub
 
 # kubernetes
 alias k="kubectl"
+alias kdn="k describe nodes"      # usage: kdn <node_name>
+alias kdp="k describe pods -n"    # usage: kdp <namespace> <pod_name>
+alias ked="k edit deployments -n" # usage: ked <namespace> <app_name>
+alias kgd="k get deployments -n"  # usage: kgd <namespace>
+alias kgj="k get jobs"
 alias kgn="k get nodes"
 alias kgns="k get namespaces"
-alias kgp="k get pods -n"	# usage: kgp <namespace>
+alias kgp="k get pods -n"         # usage: kgp <namespace>
 alias kgpa="k get pods --all-namespaces"
-alias kc="k config get-contexts"
-alias ku="k config use-context"	# usage: ku <context_name>
+alias kgc="k config get-contexts"
+alias kgcm="k get configmap"
+alias ku="k config use-context"   # usage: ku <context_name>
+# kube alias help
+alias khelp="echo 'k    = kubectl
+kdn  = k describe node            # usage: kdn <nodename>
+kdp  = k describe pods -n         # usage: kdp <namespace> <pod_name>
+ked  = k edit deployments -n      # usage: ked <namespace> <app_name>
+kgd  = k get deployments -n       # usage: kgd <namespace>
+kgd  = k get deployments -n       # usage: kgd <namespace>
+kgj  = k get jobs
+kgn  = k get nodes
+kgns = k get namespaces
+kgp  = k get pods -n              # usage: kgp <namespace>
+kgpa = k get pods --all-namespaces
+kgc  = k config get-contexts
+kgcm = k get configmap
+ksw  = k config use-context, with pattern matching
+ku   = k config use-context       # usage: ku <context_name>'"
 
 # updates: check for rhel/cent, otherwise assume deb/ubu
 if type yum >/dev/null 2>/dev/null; then
